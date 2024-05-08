@@ -1,6 +1,6 @@
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void ft_aux_pf(char const *format, int *i, va_list args, int *count)
+void  ft_aux_pf(char const *format, int *i, va_list args, int *count)
 {
   if (format[*i] == 'c')
     ft_putchar_pf(args);
@@ -11,12 +11,12 @@ void ft_aux_pf(char const *format, int *i, va_list args, int *count)
   else if (format[*i] == 'd' || format[*i] == 'i')
     ft_putnbr_pf(args);
   else if (format[*i] == 'u')
-    ft_putuns_pf(args);
+    ft_putunsnbr_pf(args);
   else if (format[*i] == 'x')
     ft_putminushex_pf(args);
   else if (format[*i] == 'X')
     ft_putmayushex_pf(args);
   else if (format[*i] == '%')
     write(1, '%', 1);
-    (*count)++;
+  (*count)++;
 }
