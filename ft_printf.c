@@ -30,8 +30,26 @@ int ft_printf(char const *format, ...)
 
 int main()
 {
-    int ret1 = ft_printf("Character: %c\n", 'A');
-    int ret2 = printf("Character: %c\n", 'A');
+    int ret1, ret2;
+
+    // For character
+    ret1 = ft_printf("Character: %c\n", 'A');
+    ret2 = printf("Character: %c\n", 'A');
+    printf("-----------------------\n");
+
+    // For string
+    ret1 = ft_printf("String: %s\n", "Hello, World!");
+    ret2 = printf("String: %s\n", "Hello, World!");
+    printf("-----------------------\n");
+
+    // For decimal (base 10)
+    ret1 = ft_printf("Decimal: %d\n", 12345);
+    ret2 = printf("Decimal: %d\n", 12345);
+    printf("-----------------------\n");
+
+    // For integer
+    ret1 = ft_printf("Integer: %i\n", -12345);
+    ret2 = printf("Integer: %i\n", -12345);
     printf("-----------------------\n");
 }
 

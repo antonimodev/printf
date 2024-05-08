@@ -16,7 +16,7 @@ void	ft_putunsnbr_pf(va_list args)
 	}
 	while (i > 0)
 	{
-		write(1, &buffer[i], 1);
 		i--;
+		write(1, &buffer[i], 1);
 	}
 }

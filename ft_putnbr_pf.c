@@ -9,12 +9,11 @@ void	ft_putnbr_pf(va_list args)
 	number = va_arg(args, int);
 	i = 0;
 	if (number == 0)
-		write(1, '0', 1);
+		write(1, "0", 1);
 	if (number < 0)
 	{
 		number = -number;
-		buffer[i] = '-';
-		i++;
+		write(1, "-", 1);
 	}
 	while (number > 0)
 	{
@@ -24,12 +23,15 @@ void	ft_putnbr_pf(va_list args)
 	}
 	while (i != 0)
 	{
-		write(1, &buffer[i], 1);
 		i--;
+		write(1, &buffer[i], 1);
 	}
 }
 
 
 /* Usamos un Buffer de 10 para almacenar los dígitos
 en orden inverso y poder recorrerlos de delante
-hacia detrás en el orden correcto */
+hacia detrás en el orden correcto.
+
+- Además hacemos primero el decremento debido a que
+nos encontramos en una posición adelantada */
