@@ -6,7 +6,7 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:14:01 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 11:14:20 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:32:37 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,15 @@ int	ft_printf(char const *format, ...)
 	int		count;
 	va_list	args;
 
+	i = 0;
 	count = 0;
 	va_start(args, format);
-	i = 0;
-	if (format == NULL)
-		return (-1);
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			ft_aux_pf(format, &i, args, &count);
+			ft_aux_pf(format, &i, args);
 		}
 		else
 		{

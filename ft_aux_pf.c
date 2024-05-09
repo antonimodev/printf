@@ -6,13 +6,13 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:13:36 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 11:13:54 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:32:33 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_aux_pf(char const *format, int *i, va_list args, int *count)
+void	ft_aux_pf(char const *format, int *i, va_list args)
 {
 	if (format[*i] == 'c')
 		ft_putchar_pf(args);
@@ -30,5 +30,4 @@ void	ft_aux_pf(char const *format, int *i, va_list args, int *count)
 		ft_putmayushex_pf(args);
 	else if (format[*i] == '%')
 		write(1, "%", 1);
-	(*count)++;
 }
