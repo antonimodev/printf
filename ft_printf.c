@@ -6,7 +6,7 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:14:01 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 11:32:37 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:56:46 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_printf(char const *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			ft_aux_pf(format, &i, args);
+			count = count + ft_aux_pf(format, &i, args);
 		}
 		else
 		{

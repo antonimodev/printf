@@ -6,38 +6,42 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:15:16 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 11:15:20 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:31:49 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_pf(va_list args)
+static void	ft_putnbr_recursive_pf(int number, int *count)
 {
-	int		number;
-	int		i;
-	char	buffer[10];
+	char	c;
 
-	number = va_arg(args, int);
-	i = 0;
-	if (number == 0)
-		write(1, "0", 1);
+	if (number == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		*count = 11;
+		return ;
+	}
 	if (number < 0)
 	{
-		number = -number;
 		write(1, "-", 1);
+		number = -number;
+		(*count)++;
 	}
-	while (number > 0)
-	{
-		buffer[i] = (number % 10) + '0';
-		number = number / 10;
-		i++;
-	}
-	while (i != 0)
-	{
-		i--;
-		write(1, &buffer[i], 1);
-	}
+	if (number > 9)
+		ft_putnbr_recursive_pf(number / 10, count);
+	c = (number % 10) + '0';
+	write(1, &c, 1);
+	(*count)++;
+}
+
+int	ft_putnbr_pf(va_list args)
+{
+	int		count;
+
+	count = 0;
+	ft_putnbr_recursive_pf(va_arg(args, int), &count);
+	return (count);
 }
 
 /* Usamos un Buffer de 10 para almacenar los dígitos
