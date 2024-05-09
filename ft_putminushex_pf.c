@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putminushex_pf.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/09 11:15:09 by antonimo          #+#    #+#             */
+/*   Updated: 2024/05/09 11:16:22 by antonimo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	ft_hexrecursive_pf(unsigned int number)
+static void	ft_hexrecursive_pf(unsigned int number)
 {
 	unsigned int	remainder;
 	char			save_rem;
 
 	if (number == 0)
-		return;
+		return ;
 	ft_hexrecursive_pf(number / 16);
 	remainder = number % 16;
 	save_rem = (remainder + '0');

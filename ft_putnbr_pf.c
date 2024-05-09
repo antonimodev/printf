@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_pf.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/09 11:15:16 by antonimo          #+#    #+#             */
+/*   Updated: 2024/05/09 11:15:20 by antonimo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_putnbr_pf(va_list args)
 {
-	int	number;
-	int	i;
-	char buffer[10];
+	int		number;
+	int		i;
+	char	buffer[10];
 
 	number = va_arg(args, int);
 	i = 0;
@@ -27,7 +39,6 @@ void	ft_putnbr_pf(va_list args)
 		write(1, &buffer[i], 1);
 	}
 }
-
 
 /* Usamos un Buffer de 10 para almacenar los dígitos
 en orden inverso y poder recorrerlos de delante

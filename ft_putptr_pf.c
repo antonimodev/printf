@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putptr_pf.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/09 11:15:24 by antonimo          #+#    #+#             */
+/*   Updated: 2024/05/09 11:15:28 by antonimo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_hexrecursive_pf(unsigned long long number)
@@ -6,7 +18,7 @@ void	ft_hexrecursive_pf(unsigned long long number)
 	char			save_remainder;
 
 	if (number == 0)
-		return;
+		return ;
 	ft_hexrecursive_pf(number / 16);
 	remainder = number % 16;
 	save_remainder = remainder + '0';
@@ -22,7 +34,7 @@ void	ft_hexrecursive_pf(unsigned long long number)
 void	ft_putptr_pf(va_list args)
 {
 	void	*ptr;
-	
+
 	ptr = va_arg(args, void *);
 	write(1, "0x", 2);
 	ft_hexrecursive_pf((unsigned long long)ptr);
