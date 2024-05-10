@@ -6,37 +6,46 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:15:09 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 16:02:58 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:57:06 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_hexrecursive_pf(unsigned int number)
+static int	ft_hexrecursive_pf(int number)
 {
-	unsigned int	remainder;
+	int				remainder;
 	char			save_rem;
+	int				count;
 
+	count = 0;
 	if (number == 0)
-		return ;
-	ft_hexrecursive_pf(number / 16);
+		return (0);
+	count += ft_hexrecursive_pf(number / 16);
 	remainder = number % 16;
 	save_rem = (remainder + '0');
 	if (remainder < 10)
+	{
 		write(1, &save_rem, 1);
+		count++;
+	}
 	else
 	{
 		save_rem = ((remainder - 10) + 'a');
 		write(1, &save_rem, 1);
+		count++;
 	}
+	return (count);
 }
 
-void	ft_putminushex_pf(va_list args)
+int	ft_putminushex_pf(va_list args)
 {
-	unsigned int	number;
+	int	number;
+	int	count;
 
-	number = va_arg(args, unsigned int);
-	ft_hexrecursive_pf(number);
+	number = va_arg(args, int);
+	count = ft_hexrecursive_pf(number);
+	return (count);
 }
 
 /*En la función ft_hexrecursive_pf hacemos
