@@ -6,7 +6,7 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:15:24 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/14 16:20:04 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:38:21 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int	ft_putptr_pf(va_list args)
 	void	*ptr;
 	int		count;
 
-	count = 2;
 	ptr = va_arg(args, void *);
-	write(1, "0x", 2);
+	if (ft_putstr_pf("0x") == -1)
+		return (-1);
+	count = 2;
 	count += ft_hexptr_pf((unsigned long long) ptr);
 	return (count);
 }
