@@ -6,7 +6,7 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:24:45 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/10 15:05:45 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:11:03 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,18 @@ static char	*ft_checkhex_pf(char x_or_X)
 	return (base_character);
 }
 
-int	ft_hex_pf(va_list arg, char x_or_X, int *count)
+int	ft_hex_pf(unsigned int number, char x_or_X, int *count)
 {
 	char			str[25];
 	char			*base_character;
 	int				i;
-	unsigned int	number;
 
 	base_character = ft_checkhex_pf(x_or_X);
 	i = 0;
-	number = va_arg(arg, int);
 	if (number == 0)
 	{
-		write(1, "0", 1);
+		if (ft_putchar_pf('0') == -1)
+			return (-1);
 		(*count)++;
 	}
 	while (number != 0)
@@ -46,7 +45,8 @@ int	ft_hex_pf(va_list arg, char x_or_X, int *count)
 	}
 	while (i--)
 	{
-		write(1, &str[i], 1);
+		if (ft_putchar_pf(str[i]) == -1)
+			return (-1);
 		(*count)++;
 	}
 	return (*count);

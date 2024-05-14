@@ -6,26 +6,25 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:15:40 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 16:00:54 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:14:23 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putunsnbr_pf(va_list args)
+int	ft_putunsnbr_pf(unsigned int number)
 {
-	unsigned int	number;
 	int				i;
 	int				count;
 	char			buffer[10];
 
-	number = va_arg(args, unsigned int);
 	i = 0;
 	count = 0;
 	if (number == 0)
 	{
 		count++;
-		write(1, "0", 1);
+		if (ft_putchar_pf('0') == -1)
+			return (-1);
 	}
 	while (number > 0)
 	{
@@ -36,7 +35,8 @@ int	ft_putunsnbr_pf(va_list args)
 	{
 		i--;
 		count++;
-		write(1, &buffer[i], 1);
+		if (ft_putchar_pf(buffer[i]) == -1)
+			return (-1);
 	}
 	return (count);
 }

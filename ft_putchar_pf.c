@@ -6,17 +6,13 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:14:34 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 13:16:24 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/14 10:26:37 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_pf(va_list args)
+int	ft_putchar_pf(int c)
 {
-	char	c;
-
-	c = (char)va_arg(args, int);
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }

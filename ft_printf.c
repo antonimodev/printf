@@ -6,33 +6,52 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:14:01 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/10 15:53:00 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:00:04 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	handle_format(const char *format, int *i, va_list args)
+{
+	int	count;
+	int	a;
+
+	count = 0;
+	if (format[*i] == '%')
+	{
+		(*i)++;
+		a = ft_aux_pf(format, i, args);
+		if (a == -1)
+			return (-1);
+		else
+			count += a;
+	}
+	else
+	{
+		if (write(1, &format[*i], 1) == -1)
+			return (-1);
+		count++;
+	}
+	return (count);
+}
 
 int	ft_printf(char const *format, ...)
 {
 	int		i;
 	int		count;
 	va_list	args;
+	int		result;
 
 	i = 0;
 	count = 0;
 	va_start(args, format);
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
-		{
-			i++;
-			count = count + ft_aux_pf(format, &i, args);
-		}
-		else
-		{
-			write(1, &format[i], 1);
-			count++;
-		}
+		result = handle_format(format, &i, args);
+		if (result == -1)
+			return (-1);
+		count += result;
 		i++;
 	}
 	va_end(args);
@@ -61,8 +80,8 @@ int	ft_printf(char const *format, ...)
 	printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
 	printf("-----------------------\n");
 	// For decimal (base 10)
-	ret1 = ft_printf("Decimal: %d\n", 12345);
-	ret2 = printf("Decimal: %d\n", 12345);
+	ret1 = ft_printf("Decimal: %d\n", 10000);
+	ret2 = printf("Decimal: %d\n", 10000);
 	printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
 	printf("-----------------------\n");
 	// For integer
@@ -90,7 +109,7 @@ int	ft_printf(char const *format, ...)
 	ret2 = printf("Percent: %%\n");
 	printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
 	printf("-----------------------\n");
-} */
+ }*/
 
 /*	cspdiuxX%
  * Character

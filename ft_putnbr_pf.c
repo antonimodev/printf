@@ -6,42 +6,37 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:15:16 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/09 13:31:49 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:42:18 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_putnbr_recursive_pf(int number, int *count)
+int	ft_putnbr_pf(int number, int *count)
 {
-	char	c;
+	int		digit;
 
 	if (number == -2147483648)
 	{
-		write(1, "-2147483648", 11);
-		*count = 11;
-		return ;
+		if (ft_putstr_pf("-2147483648") == -1)
+			return (-1);
+		(*count) = (*count) + 11;
+		return (*count);
 	}
 	if (number < 0)
 	{
-		write(1, "-", 1);
+		if (ft_putchar_pf('-') == -1)
+			return (-1);
 		number = -number;
 		(*count)++;
 	}
 	if (number > 9)
-		ft_putnbr_recursive_pf(number / 10, count);
-	c = (number % 10) + '0';
-	write(1, &c, 1);
+		ft_putnbr_pf(number / 10, count);
+	digit = (number % 10) + '0';
+	if (ft_putchar_pf(digit) == -1)
+		return (-1);
 	(*count)++;
-}
-
-int	ft_putnbr_pf(va_list args)
-{
-	int		count;
-
-	count = 0;
-	ft_putnbr_recursive_pf(va_arg(args, int), &count);
-	return (count);
+	return (*count);
 }
 
 /* Usamos un Buffer de 10 para almacenar los dígitos
