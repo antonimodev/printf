@@ -1,2 +1,3 @@
-# Ignoramos archivos innecesarios #
-.vscode
+# Ignore all hidden files
+*.vscode
+.DStore
