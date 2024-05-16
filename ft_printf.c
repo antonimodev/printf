@@ -6,7 +6,7 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:14:01 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/14 16:00:04 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:19:52 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,3 @@ int	ft_printf(char const *format, ...)
 	printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
 	printf("-----------------------\n");
  }*/
-
-/*	cspdiuxX%
- * Character
- * String
- * Pointer
- * Decimal number
- * Integer
- * Decimal unsigned number
- * Hex minus
- * Hex mayus
- * Percentage symbol (%)
- */

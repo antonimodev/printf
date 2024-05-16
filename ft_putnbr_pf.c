@@ -6,7 +6,7 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:15:16 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/14 17:44:33 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:19:29 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,3 @@ int	ft_putnbr_pf(int number, int *count)
 	(*count)++;
 	return (*count);
 }
-
-/* Usamos un Buffer de 10 para almacenar los dígitos
-en orden inverso y poder recorrerlos de delante
-hacia detrás en el orden correcto.
-
-- Además hacemos primero el decremento debido a que
-nos encontramos en una posición adelantada */

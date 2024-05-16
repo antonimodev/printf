@@ -6,7 +6,7 @@
 /*   By: antonimo <antonimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:15:24 by antonimo          #+#    #+#             */
-/*   Updated: 2024/05/14 16:38:21 by antonimo         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:19:27 by antonimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,3 @@ int	ft_putptr_pf(va_list args)
 	count += ft_hexptr_pf((unsigned long long) ptr);
 	return (count);
 }
-
-/* Usamos unsigned long long para representar correctamente
-la cantidad de números de la dirección de memoria en un
-sistema de 64 bits. */
